@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -26,6 +27,8 @@ public class LoginActivity extends AppCompatActivity {
     private Context mContext;
     private Button loginBtn = null;
     private EditText username, password;
+    public static final String SHARED_PREF = "SharedPrefs";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +45,8 @@ public class LoginActivity extends AppCompatActivity {
         password = findViewById(R.id.passwordedit);
         loginBtn = (Button) findViewById(R.id.loginbutton);
 
+
+
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -49,6 +54,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
     protected void handleLogin() {
         // handling empty field
         String usernameS = username.getText().toString();
@@ -69,9 +75,16 @@ public class LoginActivity extends AppCompatActivity {
                             response.code(), Toast.LENGTH_SHORT).show();
                     return;
                 }
+
                 BaseResponse<User> res = response.body();
                 // if success finish this activity (go to main activity)
                 if (res.success) {
+                    SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREF, MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+
+                    editor.putString("name", "true");
+                    editor.apply();
+
                     moveActivity(getApplicationContext(), MainActivity.class);
                     Toast.makeText(mContext, res.message, Toast.LENGTH_SHORT).show();
                     finish();

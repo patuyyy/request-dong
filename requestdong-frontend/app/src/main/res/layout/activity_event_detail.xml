@@ -32,17 +32,17 @@
         android:outlineAmbientShadowColor="@color/black">
 
         <TextView
-            android:id="@+id/busname"
+            android:id="@+id/eventname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:text="Bus name"
+            tools:text="Event Name"
             android:textSize="18sp"
             android:layout_marginHorizontal="25sp"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="5dp"
             android:background="@drawable/roundedrectangle2"
             android:backgroundTint="#F2F3F5"
-            android:drawableLeft="@drawable/bus_white"
+            android:drawableLeft="@drawable/assignment_white"
             android:drawableTint="#3155ED"
             android:drawablePadding="15dp"
             android:padding="15dp"
@@ -50,18 +50,18 @@
             android:textColorHint="#8ECDDD"
             />
         <TextView
-            android:id="@+id/capacity"
+            android:id="@+id/eventdate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:text="Capacity"
+            tools:text="Date"
             android:textSize="18sp"
             android:layout_marginHorizontal="25sp"
-            android:layout_below="@id/busname"
+            android:layout_below="@id/eventname"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
             android:background="@drawable/roundedrectangle2"
             android:backgroundTint="#F2F3F5"
-            android:drawableLeft="@drawable/person_white"
+            android:drawableLeft="@drawable/calendar_white"
             android:drawableTint="#3155ED"
             android:drawablePadding="15dp"
             android:padding="15dp"
@@ -72,15 +72,15 @@
             android:id="@+id/price"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:text="Price"
+            tools:text="Description"
             android:textSize="18sp"
             android:layout_marginHorizontal="25sp"
-            android:layout_below="@id/capacity"
+            android:layout_below="@id/eventdate"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
             android:background="@drawable/roundedrectangle2"
             android:backgroundTint="#F2F3F5"
-            android:drawableLeft="@drawable/paid_white"
+            android:drawableLeft="@drawable/description_white"
             android:drawableTint="#3155ED"
             android:drawablePadding="15dp"
             android:padding="15dp"
@@ -88,7 +88,7 @@
             android:textColorHint="#8ECDDD"
             />
         <LinearLayout
-            android:id="@+id/bustypelayout"
+            android:id="@+id/registered"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/price"
@@ -97,21 +97,17 @@
             android:layout_marginBottom="0dp"
             android:gravity="center">
             <TextView
-                android:layout_width="96dp"
+                android:layout_width="110dp"
                 android:layout_height="wrap_content"
-                android:text="Bus Type"
+                android:text="Registered as"
                 android:textSize="18dp"
                 android:textColor="#22668D"/>
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/bus_white"
-                app:tint="#22668D" />
+
             <TextView
-                android:id="@+id/busTypetxt"
+                android:id="@+id/stafftxt"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                tools:text="Bus Type"
+                tools:text="staff"
                 android:textSize="18sp"
                 android:textColor="@color/black"
                 android:gravity="center_vertical"
@@ -119,171 +115,55 @@
                 android:paddingLeft="5sp"
                 />
         </LinearLayout>
-        <LinearLayout
-            android:id="@+id/departurelayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/bustypelayout"
-            android:orientation="horizontal"
-            android:paddingHorizontal="20sp"
-            android:layout_marginBottom="0dp"
-            android:gravity="center">
-            <TextView
-                android:layout_width="96dp"
-                android:layout_height="wrap_content"
-                android:text="Departure"
-                android:textSize="18dp"
-                android:textColor="#22668D"/>
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/house_white"
-                app:tint="#22668D" />
-            <TextView
-                android:id="@+id/departuretxt"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                tools:text="Departure"
-                android:textSize="18sp"
-                android:textColor="@color/black"
-                android:gravity="center_vertical"
-                android:layout_marginLeft="10sp"
-                android:paddingLeft="5sp"
-                />
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/arrivallayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/departurelayout"
-            android:orientation="horizontal"
-            android:paddingHorizontal="20sp"
-            android:layout_marginBottom="0dp"
-            android:gravity="center">
-            <TextView
-                android:layout_width="96dp"
-                android:layout_height="wrap_content"
-                android:text="Arrival"
-                android:textSize="18dp"
-                android:textColor="#22668D"/>
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/double_white"
-                app:tint="#22668D" />
-            <TextView
-                android:id="@+id/arrivaltxt"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                tools:text="Arrival"
-                android:textSize="18sp"
-                android:textColor="@color/black"
-                android:gravity="center_vertical"
-                android:layout_marginLeft="10sp"
-                android:paddingLeft="5sp"
-                />
-        </LinearLayout>
+
         <TextView
-            android:id="@+id/facilitiestext"
+            android:id="@+id/request"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Facilities"
-            android:layout_below="@id/arrivallayout"
+            android:text="Request List"
+            android:layout_below="@id/registered"
             android:layout_marginHorizontal="20dp"
             android:textSize="20sp"
             />
-        <GridLayout
-            android:id="@+id/gridlayout"
+        <ListView
+            android:id="@+id/listbus"
+            android:layout_below="@id/request"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:columnCount="3"
-            android:rowCount="3"
-            android:useDefaultMargins="true"
-            android:layout_below="@id/facilitiestext">
-            <CheckBox
-                android:id="@+id/acbox"
-                android:text="AC"
-                android:layout_margin="0dp"
-                android:layout_marginLeft="20sp"
-                android:clickable="false"
-                android:checked="false"
-                android:buttonTint="#8ECDDD"
-                />
-            <CheckBox
-                android:id="@+id/wifibox"
-                android:text="WIFI"
-                android:layout_margin="0dp"
-                android:layout_marginLeft="20sp"
-                android:clickable="false"
-                android:checked="false"
-                android:buttonTint="#8ECDDD"
-                />
-            <CheckBox
-                android:id="@+id/toiletbox"
-                android:layout_margin="0dp"
-                android:text="TOILET"
-                android:layout_marginLeft="20sp"
-                android:clickable="false"
-                android:checked="false"
-                android:buttonTint="#8ECDDD"
-                />
-            <CheckBox
-                android:id="@+id/lcdtvbox"
-                android:layout_margin="0dp"
-                android:text="LCD TV"
-                android:layout_marginLeft="20sp"
-                android:clickable="false"
-                android:checked="false"
-                android:buttonTint="#8ECDDD"
-                />
-            <CheckBox
-                android:id="@+id/coolboxbox"
-                android:layout_margin="0dp"
-                android:text="COOLBOX"
-                android:layout_marginLeft="20sp"
-                android:clickable="false"
-                android:checked="false"
-                android:buttonTint="#8ECDDD"
-                />
-            <CheckBox
-                android:id="@+id/lunchbox"
-                android:layout_margin="0dp"
-                android:text="LUNCH"
-                android:layout_marginLeft="20sp"
-                android:clickable="false"
-                android:checked="false"
-                android:buttonTint="#8ECDDD"
-                />
-            <CheckBox
-                android:id="@+id/baggagebox"
-                android:layout_margin="0dp"
-                android:text="LARGE\nBAGGAGE"
-                android:layout_marginLeft="20sp"
-                android:clickable="false"
-                android:checked="false"
-                android:buttonTint="#8ECDDD"
-                />
-            <CheckBox
-                android:id="@+id/socketbox"
-                android:layout_margin="0dp"
-                android:text="ELECTRIC\nSOCKET"
-                android:layout_marginLeft="20sp"
-                android:clickable="false"
-                android:checked="false"
-                android:buttonTint="#8ECDDD"
-                />
-        </GridLayout>
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginHorizontal="20dp"
+            android:backgroundTint="#D9D9D9"
+            />
     </RelativeLayout>
-    <Button
-        android:id="@+id/checkschedulebtn"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="120sp"
-        android:layout_marginTop="615sp"
-        android:text="Check schedule "
-        android:background="@drawable/roundedrectangle2"
-        app:backgroundTint="#22668D"
-        android:gravity="center"
-        android:textColor="@color/white"
-        />
+        android:layout_below="@id/bgputih"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/acarabtn"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Daftar staff acara"
+            android:layout_marginHorizontal="10dp"
+            android:background="@drawable/roundedrectangle2"
+            app:backgroundTint="#22668D"
+            android:gravity="center"
+            android:textColor="@color/white"
+            />
+        <Button
+            android:id="@+id/operasionalbtn"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:text="Daftar staff ops"
+            android:background="@drawable/roundedrectangle2"
+            app:backgroundTint="#22668D"
+            android:gravity="center"
+            android:textColor="@color/white"
+            />
+    </LinearLayout>
+
 </RelativeLayout>

@@ -37,6 +37,43 @@ class RequestController {
         }
     }
 
+    async getByEvent(req, res) {
+      const { event_id } = req.params;
+      try {
+        const request = await db.query(
+          `select r.request_id as request_id, 
+          u.name as request_by, 
+          i.name as taken_by, 
+          e.name as event_name, 
+          r.requested_thing, 
+          r.amount, 
+          r.deadline, 
+          r.status 
+          from requests as r 
+          inner join users as u 
+          on u.user_id = r.request_by 
+          inner join users as i 
+          on i.user_id = r.taken_by 
+          inner join events as e
+          on e.event_id = r.event;`
+        );
+        const msg =
+        request.rows.length === 0
+            ? "Request not found"
+            : "Request retrieved successfully";
+        
+        if(request.rows.length === 0) {
+        res.status(400).send(buildResp(msg, request.rows));
+      } else {
+        res.status(200).send(buildResp(msg, request.rows));
+      }
+
+      } catch (err) {
+        console.error(err.message);
+        return;
+      }
+  }
+
     
 
     async addRequest(req, res) {
