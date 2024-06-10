@@ -11,12 +11,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.patuyyy.requestdong_frontend.model.Event;
+import com.patuyyy.requestdong_frontend.model.Request;
 
 import java.util.List;
 
-public class RequestArrayAdapter extends ArrayAdapter<Event> {
+public class RequestArrayAdapter extends ArrayAdapter<Request> {
     // invoke the suitable constructor of the ArrayAdapter class
-    public RequestArrayAdapter(@NonNull Context context, List<Event> list) {
+    public RequestArrayAdapter(@NonNull Context context, List<Request> list) {
         super(context, 0, list);
     }
 
@@ -27,17 +28,19 @@ public class RequestArrayAdapter extends ArrayAdapter<Event> {
         View currentItemView = convertView;
 
         if (currentItemView == null) {
-            currentItemView = LayoutInflater.from(getContext()).inflate(R.layout.event_view, parent, false);
+            currentItemView = LayoutInflater.from(getContext()).inflate(R.layout.request_view, parent, false);
         }
 
         // get the position of the view from the ArrayAdapter
-        Event currentEvent = getItem(position);
+        Request currentRequest = getItem(position);
 
         // then according to the position of the view assign the desired TextView 1 for the same
-        TextView eventText = currentItemView.findViewById(R.id.eventname);
-        TextView eventTimeText = currentItemView.findViewById(R.id.eventdate);
-        eventText.setText(currentEvent.getName());
-        eventTimeText.setText(currentEvent.getTime().toString());
+        TextView requestText = currentItemView.findViewById(R.id.requested_thing);
+        TextView amount = currentItemView.findViewById(R.id.amount);
+        TextView deadline = currentItemView.findViewById(R.id.deadline);
+        requestText.setText(currentRequest.getRequested_thing().toString());
+        amount.setText("Amount :" + currentRequest.getAmount());
+        deadline.setText(currentRequest.getDeadline().toString());
 
         return currentItemView;
     }

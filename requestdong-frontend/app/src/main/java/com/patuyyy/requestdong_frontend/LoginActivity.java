@@ -82,8 +82,13 @@ public class LoginActivity extends AppCompatActivity {
                     SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREF, MODE_PRIVATE);
                     SharedPreferences.Editor editor = sharedPreferences.edit();
 
-                    editor.putString("name", "true");
+                    editor.putString("key", "true");
                     editor.apply();
+
+                    editor.putString("user_id", Integer.toString(res.data.getUserId()));
+                    editor.putString("name", res.data.getName());
+                    editor.putString("username", res.data.getUsername());
+                    editor.commit();
 
                     moveActivity(getApplicationContext(), MainActivity.class);
                     Toast.makeText(mContext, res.message, Toast.LENGTH_SHORT).show();

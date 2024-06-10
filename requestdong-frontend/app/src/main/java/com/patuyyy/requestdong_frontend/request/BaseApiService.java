@@ -2,6 +2,7 @@ package com.patuyyy.requestdong_frontend.request;
 
 import com.patuyyy.requestdong_frontend.model.BaseResponse;
 import com.patuyyy.requestdong_frontend.model.Event;
+import com.patuyyy.requestdong_frontend.model.Request;
 import com.patuyyy.requestdong_frontend.model.User;
 
 import java.util.List;
@@ -30,7 +31,37 @@ public interface BaseApiService {
     );
 
     @GET("events")
-    Call<List<Event>> getAllEvent(
+    Call<List<Event>> getAllEvent ();
 
+    @GET("request/getByEvent/{event_id}")
+    Call<List<Request>> getRequestByEvent (
+            @Path("event_id") int event_id
     );
+
+    @GET("users/staffacara/{event_id}")
+    Call<BaseResponse<User>> staffacara (
+            @Path("event_id") int event_id,
+            @Field("user_id") int user_id
+    );
+
+    @FormUrlEncoded
+    @POST("users/checkifregistered")
+    Call<List<User>> checkifregistered (
+            @Field("event_id") int event_id,
+            @Field("user_id") int user_id
+    );
+
+    @FormUrlEncoded
+    @POST("users/addtoacara")
+    Call<User> addToAcara (
+            @Field("event_id") int event_id,
+            @Field("user_id") int user_id
+    );
+    @FormUrlEncoded
+    @POST("users/addtooperasional")
+    Call<User> addToOperasional (
+            @Field("event_id") int event_id,
+            @Field("user_id") int user_id
+    );
+
 }

@@ -4,16 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bgfigma3"
+    android:background="@drawable/bgfigma4"
     tools:context=".EventDetailActivity">
 
     <TextView
-        android:id="@+id/eventtxt"
+        android:id="@+id/requesttxt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Event Detail"
+        android:text="Request Detail"
         android:typeface="monospace"
-        android:textColor="#22668D"
+        android:textColor="#F2F3F5"
         android:textSize="30dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="0dp"
@@ -23,7 +23,7 @@
 
     <RelativeLayout
         android:id="@+id/bgputih"
-        android:layout_below="@id/eventtxt"
+        android:layout_below="@id/requesttxt"
         android:layout_width="380dp"
         android:layout_height="576dp"
         android:layout_centerHorizontal="true"
@@ -32,10 +32,10 @@
         android:outlineAmbientShadowColor="@color/black">
 
         <TextView
-            android:id="@+id/eventname"
+            android:id="@+id/requestedthing"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:text="Event Name"
+            tools:text="Requested Thing"
             android:textSize="18sp"
             android:layout_marginHorizontal="25sp"
             android:layout_marginTop="20dp"
@@ -50,13 +50,13 @@
             android:textColorHint="#8ECDDD"
             />
         <TextView
-            android:id="@+id/eventdate"
+            android:id="@+id/deadline"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:text="Date"
             android:textSize="18sp"
             android:layout_marginHorizontal="25sp"
-            android:layout_below="@id/eventname"
+            android:layout_below="@id/requestedthing"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
             android:background="@drawable/roundedrectangle2"
@@ -69,13 +69,13 @@
             android:textColorHint="#8ECDDD"
             />
         <TextView
-            android:id="@+id/description"
+            android:id="@+id/requestby"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:text="Description"
             android:textSize="18sp"
             android:layout_marginHorizontal="25sp"
-            android:layout_below="@id/eventdate"
+            android:layout_below="@id/deadline"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
             android:background="@drawable/roundedrectangle2"

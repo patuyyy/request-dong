@@ -4,10 +4,10 @@ const { buildResp, cleanStr } = require("../utils/utils");
 class EventsController {
     async getAll(req, res) {
         try {
-          const users = await db.query("SELECT * FROM events;");
+          const events = await db.query("SELECT * FROM events;");
           res
             .status(200)
-            .send(users.rows);
+            .send(events.rows);
         } catch (err) {
           console.error(err.message);
           return;
@@ -58,6 +58,8 @@ class EventsController {
           return;
         }
     } 
+
+    
 
 
 }

@@ -1,6 +1,7 @@
 const { db } = require("../config/db.config");
 const bcrypt = require("bcrypt");
 const { buildResp, cleanStr } = require("../utils/utils");
+const { use } = require("../routes/request.routes");
 
 class UsersController {
     async getAll(req, res) {
@@ -121,8 +122,7 @@ class UsersController {
     }
 
     async addToAcara(req, res) {
-      const { event_id } = req.body;
-      const { user_id } = req.params;
+      const { event_id, user_id } = req.body;
   
       try {
         const user = await db.query(
@@ -140,8 +140,7 @@ class UsersController {
   }
 
   async addToOperasional(req, res) {
-    const { event_id } = req.body;
-    const { user_id } = req.params;
+    const { event_id, user_id } = req.body;
 
     try {
       const user = await db.query(
@@ -160,13 +159,14 @@ class UsersController {
 
 async getStaffAcara(req, res) {
   const { event_id } = req.params;
+  const { user_id } = req.body;
   try {
     const users = await db.query(
       `SELECT 
               p.p_acara_id,
               u.user_id,
               e.event_id,
-              u.name,
+              u.username,
               e.name as event_name
               FROM users AS u
               INNER JOIN
@@ -175,7 +175,8 @@ async getStaffAcara(req, res) {
               INNER JOIN
               events as e
               ON p.event_id = e.event_id
-              AND e.event_id = ${event_id};`
+              AND e.event_id = ${event_id}
+	            AND u.user_id = ${user_id};`
     );
     res
       .status(200)
@@ -208,6 +209,43 @@ async getStaffOperasional(req, res) {
     res
       .status(200)
       .send(buildResp("Users retrieved successfully", users.rows));
+  } catch (err) {
+    console.error(err.message);
+    return;
+  }
+}
+
+async checkIfRegistered (req, res) {
+  const { event_id, user_id } = req.body;
+  
+  try {
+    const users = await db.query(
+      `SELECT 
+              p.p_acara_id,
+	            o.p_ops_id,
+              u.user_id,
+              e.event_id,
+              u.username,
+              e.name as event_name
+              FROM staff_acara AS p
+	            FULL JOIN 
+	            staff_operasional as o
+	            on o.user_id = p.user_id
+              INNER JOIN
+              users AS u
+              ON u.user_id = p.user_id OR u.user_id = o.user_id
+              INNER JOIN
+              events as e
+              ON (p.event_id = e.event_id
+              AND e.event_id = ${event_id}
+	            AND p.user_id = ${user_id}) OR 
+	            (o.event_id = e.event_id
+              AND e.event_id = ${event_id}
+	            AND o.user_id = ${user_id});`
+    );
+    res
+      .status(200)
+      .send(users.rows);
   } catch (err) {
     console.error(err.message);
     return;

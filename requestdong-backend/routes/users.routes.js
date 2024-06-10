@@ -10,14 +10,15 @@ UsersRouter.get("/", Users.getAll);
 UsersRouter.get("/:user_id", Users.getById);
 UsersRouter.get("/staffacara/:event_id", Users.getStaffAcara);
 UsersRouter.get("/staffoperasional/:event_id", Users.getStaffOperasional);
+UsersRouter.post("/checkifregistered", Users.checkIfRegistered);
 
 
 
 // POST ROUTES
 UsersRouter.post("/register", Users.register);
 UsersRouter.post("/login", Users.login);
-UsersRouter.post("/addtoacara/:user_id", Users.addToAcara);
-UsersRouter.post("/addtooperasional/:user_id", Users.addToOperasional);
+UsersRouter.post("/addtoacara", Users.addToAcara);
+UsersRouter.post("/addtooperasional", Users.addToOperasional);
 
 
 // DELETE ROUTES

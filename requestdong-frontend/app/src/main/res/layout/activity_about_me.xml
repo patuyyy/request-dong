@@ -45,7 +45,7 @@
             tools:text="-"
             />
         <TextView
-            android:id="@+id/name"
+            android:id="@+id/nametxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="#8ECDDD"
@@ -57,22 +57,24 @@
             tools:text="-"
             />
         <TextView
-            android:id="@+id/usernametxt"
+            android:id="@+id/username"
             android:layout_width="105dp"
             android:layout_height="wrap_content"
             android:text="Username :"
             android:textSize="20dp"
+            android:textColor="#8ECDDD"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="20dp"
-            android:layout_below="@id/name"
+            android:layout_below="@id/nametxt"
             />
         <TextView
-            android:id="@+id/emaildata"
+            android:id="@+id/usernametxt"
             android:layout_width="195dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/name"
+            android:layout_below="@id/nametxt"
             android:gravity="left"
             android:textSize="20dp"
+            android:textColor="#8ECDDD"
             android:layout_marginLeft="130dp"
             android:layout_marginTop="20dp"
             tools:text="-"

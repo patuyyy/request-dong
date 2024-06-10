@@ -10,27 +10,47 @@
     android:backgroundTint="#3155ED"
     tools:ignore="UselessParent"
     >
-    <TextView
-        android:id="@+id/eventname"
-        android:layout_width="170dp"
+    <LinearLayout
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
-        android:paddingLeft="20sp"
-        android:paddingVertical="12dp"
-        android:gravity="left"
-        android:text="Event Name"
-        android:textColor="#FDFDFD"
-        android:paddingTop="10dp"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        tools:ignore="RtlHardcoded" />
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/requested_thing"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20sp"
+            android:paddingVertical="10dp"
+            android:gravity="left"
+            android:text="Request Thing"
+            android:textColor="#FDFDFD"
+            android:paddingTop="10dp"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            tools:ignore="RtlHardcoded" />
+        <TextView
+            android:id="@+id/amount"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20sp"
+            android:paddingVertical="10dp"
+            android:gravity="left"
+            android:text="Amount"
+            android:textColor="#FDFDFD"
+            android:paddingTop="10dp"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            tools:ignore="RtlHardcoded" />
+    </LinearLayout>
+
     <TextView
-        android:id="@+id/eventdate"
+        android:id="@+id/deadline"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingRight="20sp"
         android:paddingVertical="12dp"
         android:gravity="right"
-        android:text="Event Date"
+        android:text="Deadline"
         android:textColor="#FDFDFD"
         android:paddingTop="10dp"
         android:textSize="15sp"

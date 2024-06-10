@@ -63,7 +63,7 @@ public class LandingActivity extends AppCompatActivity {
     }
     private void checkAuth() {
         SharedPreferences sharedPreferences = getSharedPreferences(LoginActivity.SHARED_PREF, MODE_PRIVATE);
-        String check = sharedPreferences.getString("name", "");
+        String check = sharedPreferences.getString("key", "");
         if (check.equals("true")) {
             moveActivity(getApplicationContext(), MainActivity.class);
             Toast.makeText(mContext, "Login Successful", Toast.LENGTH_SHORT).show();

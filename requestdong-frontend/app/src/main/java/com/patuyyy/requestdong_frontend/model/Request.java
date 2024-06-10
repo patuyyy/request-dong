@@ -11,8 +11,8 @@ public class Request {
     private String request_by;
     @SerializedName("taken_by")
     private String taken_by;
-    @SerializedName("event")
-    private String event;
+    @SerializedName("event_name")
+    private String event_name;
     @SerializedName("requested_thing")
     private String requested_thing;
     @SerializedName("amount")
@@ -27,7 +27,7 @@ public class Request {
         return request_by;
     }
     public String getTaken_by() { return taken_by; }
-    public String getEvent() { return event; }
+    public String getEvent() { return event_name; }
     public String getRequested_thing() { return requested_thing; }
     public int getAmount() { return amount; }
     public Date getDeadline() { return deadline; }

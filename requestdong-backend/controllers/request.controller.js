@@ -49,13 +49,15 @@ class RequestController {
           r.amount, 
           r.deadline, 
           r.status 
-          from requests as r 
-          inner join users as u 
-          on u.user_id = r.request_by 
-          inner join users as i 
-          on i.user_id = r.taken_by 
+          from requests as r
           inner join events as e
-          on e.event_id = r.event;`
+          on r.event = ${event_id}
+          full join users as u 
+          on u.user_id = r.request_by 
+          full join users as i 
+          on i.user_id = r.taken_by
+          where e.event_id = ${event_id}; 
+          `
         );
         const msg =
         request.rows.length === 0
@@ -63,9 +65,9 @@ class RequestController {
             : "Request retrieved successfully";
         
         if(request.rows.length === 0) {
-        res.status(400).send(buildResp(msg, request.rows));
+        res.status(400).send(request.rows);
       } else {
-        res.status(200).send(buildResp(msg, request.rows));
+        res.status(200).send(request.rows);
       }
 
       } catch (err) {
@@ -92,7 +94,7 @@ class RequestController {
         );
         res
           .status(200)
-          .send(buildResp("Event created successfully", request.rows[0]));
+          .send(buildResp("Request created successfully", request.rows[0]));
       } catch (err) {
         console.error(err.message);
         return;
