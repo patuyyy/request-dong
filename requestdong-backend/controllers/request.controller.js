@@ -102,8 +102,7 @@ class RequestController {
     }
 
     async takeRequest(req, res) {
-      const { user_id } = req.params;
-      const { request_id } = req.body;
+      const { request_id, user_id } = req.body;
 
       try {   
         const request = await db.query(

@@ -12,7 +12,6 @@ public class Staff {
     private String event_name;
     @SerializedName("user_id")
     private int user_id;
-
     @SerializedName("event_id")
     private int event_id;
 

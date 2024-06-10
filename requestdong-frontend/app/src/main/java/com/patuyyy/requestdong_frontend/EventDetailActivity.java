@@ -258,7 +258,7 @@ public class EventDetailActivity extends AppCompatActivity {
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                         selectedRequestTemp = res.get((currentPage) * pageSize + i);
                         position = i;
-                        moveActivity(getApplicationContext(), EventDetailActivity.class);
+                        moveActivity(getApplicationContext(), RequestDetailActivity.class);
                     }
                 });
 

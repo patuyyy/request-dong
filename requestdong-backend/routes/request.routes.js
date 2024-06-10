@@ -10,8 +10,8 @@ RequestRouter.get("/:request_id", Request.getById);
 RequestRouter.get("/getByEvent/:event_id", Request.getByEvent);
 
 // POST ROUTES
-RequestRouter.post("/addRequest/:user_id", Request.addRequest);
-RequestRouter.post("/takeRequest/:user_id", Request.takeRequest);
+RequestRouter.post("/addRequest", Request.addRequest);
+RequestRouter.post("/takeRequest", Request.takeRequest);
 RequestRouter.post("/finishRequest", Request.finishRequest);
 RequestRouter.post("/rejectRequest", Request.rejectRequest);
 

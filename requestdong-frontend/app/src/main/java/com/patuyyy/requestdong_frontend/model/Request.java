@@ -21,7 +21,7 @@ public class Request {
     private Date deadline;
     @SerializedName("status")
     private String status;
-    public int getEvent_id() { return request_id; }
+    public int getRequest_id() { return request_id; }
 
     public String getRequest_by() {
         return request_by;
