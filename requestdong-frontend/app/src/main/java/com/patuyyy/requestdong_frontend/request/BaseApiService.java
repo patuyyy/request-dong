@@ -72,19 +72,19 @@ public interface BaseApiService {
     );
 
     @FormUrlEncoded
-    @POST("requests/takeRequest")
-    Call<BaseResponse<Request>> takeRequest (
+    @POST("request/takeRequest")
+    Call<Request> takeRequest (
             @Field("request_id") int request_id,
             @Field("user_id") int user_id
     );
     @FormUrlEncoded
-    @POST("requests/finishRequest")
-    Call<BaseResponse<Request>> finishRequest (
+    @POST("request/finishRequest")
+    Call<Request> finishRequest (
             @Field("request_id") int request_id
     );
     @FormUrlEncoded
-    @POST("requests/rejectRequest")
-    Call<BaseResponse<Request>> rejectRequest (
+    @POST("request/rejectRequest")
+    Call<Request> rejectRequest (
             @Field("request_id") int request_id
     );
 

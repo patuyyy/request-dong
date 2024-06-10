@@ -112,7 +112,7 @@ class RequestController {
         );
         res
           .status(200)
-          .send(buildResp("Request taken successfully", request.rows[0]));
+          .send(request.rows[0]);
       } catch (err) {
         console.error(err.message);
         return;
@@ -130,7 +130,7 @@ class RequestController {
         );
         res
           .status(200)
-          .send(buildResp("Request finished", request.rows[0]));
+          .send(request.rows[0]);
       } catch (err) {
         console.error(err.message);
         return;
@@ -148,7 +148,7 @@ class RequestController {
         );
         res
           .status(200)
-          .send(buildResp("Request rejected", request.rows[0]));
+          .send(request.rows[0]);
       } catch (err) {
         console.error(err.message);
         return;

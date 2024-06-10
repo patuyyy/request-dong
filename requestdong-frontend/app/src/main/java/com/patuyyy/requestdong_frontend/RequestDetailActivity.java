@@ -61,7 +61,7 @@ public class RequestDetailActivity extends AppCompatActivity {
         request_by.setText(EventDetailActivity.selectedRequestTemp.getRequest_by());
         taken_by.setText(EventDetailActivity.selectedRequestTemp.getTaken_by());
         event.setText(EventDetailActivity.selectedRequestTemp.getEvent());
-        amount.setText(EventDetailActivity.selectedRequestTemp.getAmount());
+        amount.setText("" + EventDetailActivity.selectedRequestTemp.getAmount());
         status.setText(EventDetailActivity.selectedRequestTemp.getStatus());
 
         acceptBtn = findViewById(R.id.acceptbtn);
@@ -130,10 +130,10 @@ public class RequestDetailActivity extends AppCompatActivity {
     protected void handleAcc() {
         SharedPreferences sharedPreferences = getSharedPreferences(LoginActivity.SHARED_PREF, MODE_PRIVATE);
         String uid = sharedPreferences.getString("user_id", "");
-        Log.d("CEKKKK", uid);
-        mApiService.takeRequest(Integer.parseInt(uid), EventDetailActivity.selectedRequestTemp.getRequest_id()).enqueue(new Callback<BaseResponse<Request>>(){
+        Log.d("CEKKKK", Integer.toString(EventDetailActivity.selectedRequestTemp.getRequest_id()));
+        mApiService.takeRequest(EventDetailActivity.selectedRequestTemp.getRequest_id(), Integer.parseInt(uid)).enqueue(new Callback<Request>(){
             @Override
-            public void onResponse(Call<BaseResponse<Request>> call, Response<BaseResponse<Request>> response) {
+            public void onResponse(Call<Request> call, Response<Request> response) {
                 if (!response.isSuccessful()) {
                     Toast.makeText(mContext, "Application error " + response.code(), Toast.LENGTH_SHORT).show();
                     return;
@@ -147,7 +147,7 @@ public class RequestDetailActivity extends AppCompatActivity {
                 finish();
             }
             @Override
-            public void onFailure(Call<BaseResponse<Request>> call, Throwable t) {
+            public void onFailure(Call<Request> call, Throwable t) {
                 Log.d("DEBUG_DATA", t.getMessage());
                 Toast.makeText(mContext, "Problem with the server",
                         Toast.LENGTH_SHORT).show();
@@ -158,9 +158,9 @@ public class RequestDetailActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences(LoginActivity.SHARED_PREF, MODE_PRIVATE);
         String uid = sharedPreferences.getString("user_id", "");
         Log.d("CEKKKK", uid);
-        mApiService.finishRequest(EventDetailActivity.selectedRequestTemp.getRequest_id()).enqueue(new Callback<BaseResponse<Request>>(){
+        mApiService.finishRequest(EventDetailActivity.selectedRequestTemp.getRequest_id()).enqueue(new Callback<Request>(){
             @Override
-            public void onResponse(Call<BaseResponse<Request>> call, Response<BaseResponse<Request>> response) {
+            public void onResponse(Call<Request> call, Response<Request> response) {
                 if (!response.isSuccessful()) {
                     Toast.makeText(mContext, "Application error " + response.code(), Toast.LENGTH_SHORT).show();
                     return;
@@ -174,7 +174,7 @@ public class RequestDetailActivity extends AppCompatActivity {
                 finish();
             }
             @Override
-            public void onFailure(Call<BaseResponse<Request>> call, Throwable t) {
+            public void onFailure(Call<Request> call, Throwable t) {
                 Log.d("DEBUG_DATA", t.getMessage());
                 Toast.makeText(mContext, "Problem with the server",
                         Toast.LENGTH_SHORT).show();
@@ -185,9 +185,9 @@ public class RequestDetailActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences(LoginActivity.SHARED_PREF, MODE_PRIVATE);
         String uid = sharedPreferences.getString("user_id", "");
         Log.d("CEKKKK", uid);
-        mApiService.rejectRequest(EventDetailActivity.selectedRequestTemp.getRequest_id()).enqueue(new Callback<BaseResponse<Request>>(){
+        mApiService.rejectRequest(EventDetailActivity.selectedRequestTemp.getRequest_id()).enqueue(new Callback<Request>(){
             @Override
-            public void onResponse(Call<BaseResponse<Request>> call, Response<BaseResponse<Request>> response) {
+            public void onResponse(Call<Request> call, Response<Request> response) {
                 if (!response.isSuccessful()) {
                     Toast.makeText(mContext, "Application error " + response.code(), Toast.LENGTH_SHORT).show();
                     return;
@@ -201,7 +201,7 @@ public class RequestDetailActivity extends AppCompatActivity {
                 finish();
             }
             @Override
-            public void onFailure(Call<BaseResponse<Request>> call, Throwable t) {
+            public void onFailure(Call<Request> call, Throwable t) {
                 Log.d("DEBUG_DATA", t.getMessage());
                 Toast.makeText(mContext, "Problem with the server",
                         Toast.LENGTH_SHORT).show();
