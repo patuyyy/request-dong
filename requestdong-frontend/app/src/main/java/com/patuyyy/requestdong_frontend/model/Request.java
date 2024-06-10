@@ -33,5 +33,8 @@ public class Request {
     public Date getDeadline() { return deadline; }
 
     public String getStatus() { return status; }
+    public void changeStatus(String s) {
+        status = s;
+    }
 
 }

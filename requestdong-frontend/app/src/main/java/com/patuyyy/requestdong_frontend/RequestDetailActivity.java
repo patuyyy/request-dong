@@ -141,6 +141,7 @@ public class RequestDetailActivity extends AppCompatActivity {
 
                 Toast.makeText(mContext, "Success take request",
                         Toast.LENGTH_SHORT).show();
+                EventDetailActivity.selectedRequestTemp.changeStatus("onprogress");
                 Intent i = new Intent(getApplicationContext(), RequestDetailActivity.class);
                 i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(i);
@@ -168,6 +169,7 @@ public class RequestDetailActivity extends AppCompatActivity {
 
                 Toast.makeText(mContext, "Success finish request",
                         Toast.LENGTH_SHORT).show();
+                EventDetailActivity.selectedRequestTemp.changeStatus("finish");
                 Intent i = new Intent(getApplicationContext(), RequestDetailActivity.class);
                 i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(i);
@@ -195,6 +197,7 @@ public class RequestDetailActivity extends AppCompatActivity {
 
                 Toast.makeText(mContext, "Success reject request",
                         Toast.LENGTH_SHORT).show();
+                EventDetailActivity.selectedRequestTemp.changeStatus("rejected");
                 Intent i = new Intent(getApplicationContext(), RequestDetailActivity.class);
                 i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(i);
