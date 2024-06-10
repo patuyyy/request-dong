@@ -25,7 +25,7 @@
         android:id="@+id/bgputih"
         android:layout_below="@id/requesttxt"
         android:layout_width="380dp"
-        android:layout_height="576dp"
+        android:layout_height="610dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:background="@drawable/roundedrectangle"
@@ -42,7 +42,7 @@
             android:layout_marginBottom="5dp"
             android:background="@drawable/roundedrectangle2"
             android:backgroundTint="#F2F3F5"
-            android:drawableLeft="@drawable/assignment_white"
+            android:drawableLeft="@drawable/category_white"
             android:drawableTint="#3155ED"
             android:drawablePadding="15dp"
             android:padding="15dp"
@@ -72,7 +72,7 @@
             android:id="@+id/requestby"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:text="Description"
+            tools:text="Request by"
             android:textSize="18sp"
             android:layout_marginHorizontal="25sp"
             android:layout_below="@id/deadline"
@@ -80,131 +80,146 @@
             android:layout_marginBottom="5dp"
             android:background="@drawable/roundedrectangle2"
             android:backgroundTint="#F2F3F5"
-            android:drawableLeft="@drawable/description_white"
+            android:drawableLeft="@drawable/person_white"
             android:drawableTint="#3155ED"
             android:drawablePadding="15dp"
             android:padding="15dp"
             android:textColor="#8ECDDD"
             android:textColorHint="#8ECDDD"
             />
-        <LinearLayout
-            android:id="@+id/registered"
+        <TextView
+            android:id="@+id/takenby"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/description"
-            android:orientation="horizontal"
-            android:paddingHorizontal="20sp"
-            android:layout_marginBottom="0dp"
-            android:gravity="center">
-            <TextView
-                android:layout_width="110dp"
-                android:layout_height="wrap_content"
-                android:text="Registered as"
-                android:textSize="18dp"
-                android:textColor="#22668D"/>
+            tools:text="Taken by"
+            android:textSize="18sp"
+            android:layout_marginHorizontal="25sp"
+            android:layout_below="@id/requestby"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/roundedrectangle2"
+            android:backgroundTint="#F2F3F5"
+            android:drawableLeft="@drawable/person_white"
+            android:drawableTint="#3155ED"
+            android:drawablePadding="15dp"
+            android:padding="15dp"
+            android:textColor="#8ECDDD"
+            android:textColorHint="#8ECDDD"
+            />
+        <TextView
+            android:id="@+id/eventname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Event"
+            android:textSize="18sp"
+            android:layout_marginHorizontal="25sp"
+            android:layout_below="@id/takenby"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/roundedrectangle2"
+            android:backgroundTint="#F2F3F5"
+            android:drawableLeft="@drawable/assignment_white"
+            android:drawableTint="#3155ED"
+            android:drawablePadding="15dp"
+            android:padding="15dp"
+            android:textColor="#8ECDDD"
+            android:textColorHint="#8ECDDD"
+            />
+        <TextView
+            android:id="@+id/amount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Amount"
+            android:textSize="18sp"
+            android:layout_marginHorizontal="25sp"
+            android:layout_below="@id/eventname"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/roundedrectangle2"
+            android:backgroundTint="#F2F3F5"
+            android:drawableLeft="@drawable/more_white"
+            android:drawableTint="#3155ED"
+            android:drawablePadding="15dp"
+            android:padding="15dp"
+            android:textColor="#8ECDDD"
+            android:textColorHint="#8ECDDD"
+            />
+        <TextView
+            android:id="@+id/status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Status"
+            android:textSize="18sp"
+            android:layout_marginHorizontal="25sp"
+            android:layout_below="@id/amount"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/roundedrectangle2"
+            android:backgroundTint="#F2F3F5"
+            android:drawableLeft="@drawable/done_white"
+            android:drawableTint="#3155ED"
+            android:drawablePadding="15dp"
+            android:padding="15dp"
+            android:textColor="#8ECDDD"
+            android:textColorHint="#8ECDDD"
+            />
 
-            <TextView
-                android:id="@+id/stafftxt"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                tools:text="Tidak terdaftar"
-                android:textSize="18sp"
-                android:textColor="@color/black"
-                android:gravity="center_vertical"
-                android:layout_marginLeft="10sp"
-                android:paddingLeft="5sp"
+        <LinearLayout
+            android:id="@+id/btn_layout1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/status"
+            android:gravity="center"
+            android:layout_marginTop="20dp"
+            >
+
+            <Button
+                android:id="@+id/acceptbtn"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="Accept"
+                android:layout_marginHorizontal="10dp"
+                android:background="@drawable/roundedrectangle2"
+                app:backgroundTint="#22668D"
+                android:gravity="center"
+                android:textColor="@color/white"
+                />
+            <Button
+                android:id="@+id/rejectbtn"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:text="Reject"
+                android:background="@drawable/roundedrectangle2"
+                app:backgroundTint="#22668D"
+                android:gravity="center"
+                android:textColor="@color/white"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/btn_layout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btn_layout1"
+            android:gravity="center"
+            android:layout_marginTop="20dp"
+            >
+
+            <Button
+                android:id="@+id/finishbtn"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="Finish"
+                android:layout_marginHorizontal="10dp"
+                android:background="@drawable/roundedrectangle2"
+                app:backgroundTint="#22668D"
+                android:gravity="center"
+                android:textColor="@color/white"
                 />
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/request"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Request List"
-            android:layout_below="@id/registered"
-            android:layout_marginHorizontal="20dp"
-            android:textSize="20sp"
-            />
-        <ListView
-            android:id="@+id/listrequest"
-            android:layout_below="@id/request"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginHorizontal="20dp"
-            android:backgroundTint="#D9D9D9"
-            />
-        <LinearLayout
-            android:id="@+id/pagination_footer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:paddingHorizontal="30dp"
-            android:layout_marginTop="10dp"
-            android:layout_below="@id/listrequest">
-            <Button
-                android:id="@+id/prev_page"
-                android:layout_width="56dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:backgroundTint="#3155ED"
-                android:drawableLeft="@drawable/baseline_arrow_back_ios_24"
-                android:minHeight="0dp" />
-            <HorizontalScrollView
-                android:id="@+id/page_number_scroll"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="25"
-                android:paddingHorizontal="18dp">
-                <LinearLayout
-                    android:id="@+id/btn_layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"/>
-            </HorizontalScrollView>
-            <Button
-                android:id="@+id/next_page"
-                android:layout_width="56dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:backgroundTint="#3155ED"
-                android:drawableLeft="@drawable/baseline_arrow_forward_ios_24"
-                android:minHeight="0dp"/>
-        </LinearLayout>
     </RelativeLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/bgputih"
-        android:gravity="center">
 
-        <Button
-            android:id="@+id/acarabtn"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:text="Daftar staff acara"
-            android:layout_marginHorizontal="10dp"
-            android:background="@drawable/roundedrectangle2"
-            app:backgroundTint="#22668D"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:visibility="gone"
-            />
-        <Button
-            android:id="@+id/operasionalbtn"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="10dp"
-            android:text="Daftar staff ops"
-            android:background="@drawable/roundedrectangle2"
-            app:backgroundTint="#22668D"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:visibility="gone"
-            />
-    </LinearLayout>
 
 </RelativeLayout>

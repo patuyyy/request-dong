@@ -21,12 +21,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.patuyyy.requestdong_frontend.model.Event;
 import com.patuyyy.requestdong_frontend.model.Request;
+import com.patuyyy.requestdong_frontend.model.Staff;
 import com.patuyyy.requestdong_frontend.model.User;
 import com.patuyyy.requestdong_frontend.request.BaseApiService;
 import com.patuyyy.requestdong_frontend.request.UtilsApi;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -48,6 +50,7 @@ public class EventDetailActivity extends AppCompatActivity {
     private Button acarabtn, opsbtn = null;
     public static int position;
     private TextView name, datee, description, staff;
+    public static Staff staffTemp;
 
     private BaseApiService mApiService;
     private Context mContext;
@@ -100,6 +103,10 @@ public class EventDetailActivity extends AppCompatActivity {
         datee.setText(MainActivity.selectedEventTemp.getTime().toString());
         description.setText(MainActivity.selectedEventTemp.getDescription());
 
+        staff.setText("Belum terdaftar");
+
+
+
         prevButton.setOnClickListener(v -> {
             currentPage = currentPage != 0? currentPage-1 : 0;
             goToPage(currentPage);
@@ -110,8 +117,41 @@ public class EventDetailActivity extends AppCompatActivity {
         });
 
         handleRegistered();
+        handleStaff();
 
 
+    }
+    protected void handleStaff() {
+        SharedPreferences sharedPreferences = getSharedPreferences(LoginActivity.SHARED_PREF, MODE_PRIVATE);
+        String uid = sharedPreferences.getString("user_id", "");
+        Log.d("CEKKKK", uid);
+        mApiService.staffCheck(MainActivity.selectedEventTemp.getEvent_id(), Integer.parseInt(uid)).enqueue(new Callback<List<Staff>>(){
+            @Override
+            public void onResponse(Call <List<Staff>> call, Response<List<Staff>> response) {
+                if (!response.isSuccessful()) {
+                    Toast.makeText(mContext, "Application error " + response.code(), Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                List<Staff> res = response.body();
+                if (!res.isEmpty()) {
+                    staffTemp = res.get(0);
+                    if(!usingTernaryOperator(staffTemp.getP_acara_id())) {
+                        staff.setText("Panitia Acara");
+                    } else  {
+                        staff.setText("Panitia Operasional");
+                    }
+                }
+
+
+            }
+            @Override
+            public void onFailure(Call<List<Staff>> call, Throwable t) {
+                Log.d("DEBUG_DATASTAFF", t.getMessage());
+                Toast.makeText(mContext, "Problem with the server",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     protected void handleAcara() {
@@ -190,8 +230,6 @@ public class EventDetailActivity extends AppCompatActivity {
                     acarabtn.setVisibility(View.VISIBLE);
                     opsbtn.setVisibility(View.VISIBLE);
                 }
-
-
             }
             @Override
             public void onFailure(Call<List<User>> call, Throwable t) {
@@ -293,7 +331,9 @@ public class EventDetailActivity extends AppCompatActivity {
             Log.e("ERROR", "requestListView is null");
         }
     }
-
+    public static boolean usingTernaryOperator(Integer num) {
+        return 0 == (num == null ? 0 : num);
+    }
 
     private void moveActivity(Context ctx, Class<?> cls) {
         Intent intent = new Intent(ctx, cls);

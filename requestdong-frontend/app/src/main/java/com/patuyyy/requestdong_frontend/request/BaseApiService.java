@@ -3,6 +3,7 @@ package com.patuyyy.requestdong_frontend.request;
 import com.patuyyy.requestdong_frontend.model.BaseResponse;
 import com.patuyyy.requestdong_frontend.model.Event;
 import com.patuyyy.requestdong_frontend.model.Request;
+import com.patuyyy.requestdong_frontend.model.Staff;
 import com.patuyyy.requestdong_frontend.model.User;
 
 import java.util.List;
@@ -60,6 +61,12 @@ public interface BaseApiService {
     @FormUrlEncoded
     @POST("users/addtooperasional")
     Call<User> addToOperasional (
+            @Field("event_id") int event_id,
+            @Field("user_id") int user_id
+    );
+    @FormUrlEncoded
+    @POST("users/checkifregistered")
+    Call <List<Staff>> staffCheck (
             @Field("event_id") int event_id,
             @Field("user_id") int user_id
     );

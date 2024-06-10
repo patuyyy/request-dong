@@ -221,27 +221,39 @@ async checkIfRegistered (req, res) {
   try {
     const users = await db.query(
       `SELECT 
-              p.p_acara_id,
-	            o.p_ops_id,
-              u.user_id,
-              e.event_id,
-              u.username,
-              e.name as event_name
-              FROM staff_acara AS p
-	            FULL JOIN 
-	            staff_operasional as o
-	            on o.user_id = p.user_id
-              INNER JOIN
-              users AS u
-              ON u.user_id = p.user_id OR u.user_id = o.user_id
-              INNER JOIN
-              events as e
-              ON (p.event_id = e.event_id
-              AND e.event_id = ${event_id}
-	            AND p.user_id = ${user_id}) OR 
-	            (o.event_id = e.event_id
-              AND e.event_id = ${event_id}
-	            AND o.user_id = ${user_id});`
+    sa.p_acara_id, 
+    NULL AS p_ops_id, 
+    u.name AS username, 
+    e.name AS event_name, 
+    sa.user_id, 
+    sa.event_id
+FROM 
+    staff_acara sa
+JOIN 
+    users u ON sa.user_id = u.user_id
+JOIN 
+    events e ON sa.event_id = e.event_id
+WHERE 
+    sa.event_id = ${event_id} AND sa.user_id = ${user_id}
+
+UNION ALL
+
+SELECT 
+    NULL AS p_acara_id, 
+    so.p_ops_id, 
+    u.name AS username, 
+    e.name AS event_name, 
+    so.user_id, 
+    so.event_id
+FROM 
+    staff_operasional so
+JOIN 
+    users u ON so.user_id = u.user_id
+JOIN 
+    events e ON so.event_id = e.event_id
+WHERE 
+    so.event_id = ${event_id} AND so.user_id = ${user_id};
+`
     );
     res
       .status(200)
